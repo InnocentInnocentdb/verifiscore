@@ -1,0 +1,14 @@
+Script started on 2026-09-24 05:07:50+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="72" LINES="5"]
+[?2004h[0;32m@InnocentInnocentdb [0m➜ [1;34m/workspaces/verifiscore [0;36m([1;31mmain[0;36m) [0m$ [7mforge --version[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cforge --version
+[A
+[?2004lforge Version: 1.8.3
+Commit SHA: cae51ad458f6abb64852b7709eb784352429825d
+Build Timestamp: 2026-09-15T10:46:16.519267388Z (1789469176)
+Build Profile: dist
+[?2004h[0;32m@InnocentInnocentdb [0m➜ [1;34m/workspaces/verifiscore [0;36m([1;31mmain[0;36m) [0m$ [7mexit[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit
+[A
+[?2004lexit
+
+Script done on 2026-09-24 05:11:39+00:00 [COMMAND_EXIT_CODE="0"]

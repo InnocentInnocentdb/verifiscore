@@ -1,0 +1,30 @@
+
+.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx
+
+ ╔═╗ ╔═╗ ╦ ╦ ╔╗╔ ╔╦╗ ╦═╗ ╦ ╦         Portable and modular toolkit
+ ╠╣  ║ ║ ║ ║ ║║║  ║║ ╠╦╝ ╚╦╝    for Ethereum Application Development
+ ╚   ╚═╝ ╚═╝ ╝╚╝ ═╩╝ ╩╚═  ╩                 written in Rust.
+
+.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx
+
+Repo       : https://github.com/foundry-rs/foundry
+Book       : https://book.getfoundry.sh/
+Chat       : https://t.me/foundry_rs/
+Support    : https://t.me/foundry_support/
+Contribute : https://github.com/foundry-rs/foundry/blob/HEAD/CONTRIBUTING.md
+
+.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx.xOx
+
+foundryup: fetching latest release tag from foundry-rs/foundry...
+foundryup: resolved release tag: v1.8.3
+foundryup: installing foundry (version v1.8.3, tag v1.8.3)
+foundryup: checking if forge, cast, anvil, chisel, solar for v1.8.3 version are already installed
+foundryup: found attestation for v1.8.3 version, downloading attestation artifact, checking...
+foundryup: version v1.8.3 already installed and verified, activating...
+foundryup: use - forge 1.8.3 (cae51ad458 2026-09-15T10:46:16.519267388Z)
+foundryup: use - cast 1.8.3 (cae51ad458 2026-09-15T10:46:16.519267388Z)
+foundryup: use - anvil 1.8.3 (cae51ad458 2026-09-15T10:46:16.519267388Z)
+foundryup: use - chisel 1.8.3 (cae51ad458 2026-09-15T10:46:16.519267388Z)
+foundryup: use - solar 0.2.0-dev (a4a2926 2026-09-15T10:46:08.272087044Z)
+foundryup: done!
+foundryup: foundryup is up to date.
