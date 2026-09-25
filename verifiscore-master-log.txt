@@ -72,3 +72,48 @@ ParserError: Source "src/Counter.sol" not found: File not found. Searched the fo
 Compiling 23 files with Solc 0.8.37
 Solc 0.8.37 finished in 736.82ms
 Compiler run successful!
+[main c4f1d39] Day 1: Foundry scaffold, OpenZeppelin installed, build passing
+ 14 files changed, 324 insertions(+), 2 deletions(-)
+ create mode 100644 .github/workflows/test.yml
+ create mode 100644 .gitignore
+ create mode 100644 .gitmodules
+ create mode 100644 foundry.lock
+ create mode 100644 foundry.toml
+ create mode 100644 install-log.txt
+ create mode 160000 lib/forge-std
+ create mode 160000 lib/openzeppelin-contracts
+ create mode 100644 script/Deploy.s.sol
+ create mode 100644 src/VerifiScore.sol
+ create mode 100644 test/VerifiScore.t.sol
+ create mode 100644 verifiscore-build-log.txt
+ create mode 100644 verifiscore-master-log.txt
+To https://github.com/InnocentInnocentdb/verifiscore
+   294b4bf..c4f1d39  main -> main
+Compiling 5 files with Solc 0.8.37
+Solc 0.8.37 finished in 482.45ms
+Error: Compiler run failed:
+Error (9582): Member "setNumber" not found or not visible after argument-dependent lookup in contract VerifiScore.
+  --> test/VerifiScore.t.sol:12:9:
+   |
+12 |         counter.setNumber(0);
+   |         ^^^^^^^^^^^^^^^^^
+Compiling 3 files with Solc 0.8.37
+Solc 0.8.37 finished in 232.50ms
+Error: Compiler run failed:
+Error (2904): Declaration "VerifiScore" not found in "src/VerifiScore.sol" (referenced as "../src/VerifiScore.sol").
+ --> src/VerifiScore.sol:5:1:
+  |
+5 | import {VerifiScore} from "../src/VerifiScore.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Compiling 5 files with Solc 0.8.37
+Solc 0.8.37 finished in 1.17s
+Compiler run successful!
+No files changed, compilation skipped
+
+Ran 3 tests for test/VerifiScore.t.sol:VerifiScoreTest
+[PASS] test_RegisterStudent() (gas: 87550)
+[PASS] test_RevertWhen_DuplicateMatric() (gas: 112376)
+[PASS] test_RevertWhen_NotOwner() (gas: 36068)
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 85.56ms (7.78ms CPU time)
+
+Ran 1 test suite in 88.31ms (85.56ms CPU time): 3 tests passed, 0 failed, 0 skipped (3 total tests)

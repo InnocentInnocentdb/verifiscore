@@ -1,14 +1,24 @@
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
 
-contract VerifiScore {
-    uint256 public number;
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-    function setNumber(uint256 newNumber) public {
-        number = newNumber;
-    }
+contract VerifiScore is Ownable {
+    mapping(string => address) public matricToWallet;
+    mapping(address => string) public walletToMatric;
 
-    function increment() public {
-        number++;
+    event StudentRegistered(string matricNumber, address indexed wallet);
+
+    constructor() Ownable(msg.sender) {}
+
+    function registerStudent(string calldata matricNumber, address studentWallet) external onlyOwner {
+        require(studentWallet != address(0), "Invalid wallet address");
+        require(matricToWallet[matricNumber] == address(0), "Matric number already registered");
+        require(bytes(walletToMatric[studentWallet]).length == 0, "Wallet already registered");
+
+        matricToWallet[matricNumber] = studentWallet;
+        walletToMatric[studentWallet] = matricNumber;
+
+        emit StudentRegistered(matricNumber, studentWallet);
     }
 }
