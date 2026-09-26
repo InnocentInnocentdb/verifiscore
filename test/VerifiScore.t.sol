@@ -53,4 +53,42 @@ contract VerifiScoreTest is Test {
         vm.expectRevert("Student not registered");
         verifiScore.submitScore("MAT/9999/999", "PLB301", "Practical1", 18);
     }
+
+    function test_AcknowledgeScore() public {
+        vm.prank(lecturerWallet);
+        verifiScore.submitScore("MAT/2020/001", "PLB301", "Practical1", 18);
+
+        vm.prank(studentWallet);
+        verifiScore.acknowledgeScore("PLB301", "Practical1");
+
+        (, , bool acknowledged) = verifiScore.getScore(studentWallet, "PLB301", "Practical1");
+        assertTrue(acknowledged);
+    }
+
+    function test_RevertWhen_AcknowledgingUnsubmittedScore() public {
+        vm.prank(studentWallet);
+        vm.expectRevert("No score submitted for this assessment");
+        verifiScore.acknowledgeScore("PLB301", "Practical1");
+    }
+
+    function test_RevertWhen_DoubleAcknowledge() public {
+        vm.prank(lecturerWallet);
+        verifiScore.submitScore("MAT/2020/001", "PLB301", "Practical1", 18);
+
+        vm.prank(studentWallet);
+        verifiScore.acknowledgeScore("PLB301", "Practical1");
+
+        vm.prank(studentWallet);
+        vm.expectRevert("Score already acknowledged");
+        verifiScore.acknowledgeScore("PLB301", "Practical1");
+    }
+
+    function test_RevertWhen_UnregisteredWalletAcknowledges() public {
+        vm.prank(lecturerWallet);
+        verifiScore.submitScore("MAT/2020/001", "PLB301", "Practical1", 18);
+
+        vm.prank(address(0x999));
+        vm.expectRevert("Wallet not registered as a student");
+        verifiScore.acknowledgeScore("PLB301", "Practical1");
+    }
 }

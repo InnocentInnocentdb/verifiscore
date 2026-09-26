@@ -14,12 +14,12 @@ contract VerifiScore is Ownable {
         bool acknowledged;
     }
 
-    // wallet => courseCode => assessmentName => score entry
     mapping(address => mapping(string => mapping(string => ScoreEntry))) private studentScores;
 
     event StudentRegistered(string matricNumber, address indexed wallet);
     event LecturerAuthorized(address indexed lecturer);
     event ScoreSubmitted(string matricNumber, string courseCode, string assessmentName, uint256 score);
+    event ScoreAcknowledged(string matricNumber, string courseCode, string assessmentName);
 
     constructor() Ownable(msg.sender) {}
 
@@ -62,6 +62,18 @@ contract VerifiScore is Ownable {
         });
 
         emit ScoreSubmitted(matricNumber, courseCode, assessmentName, score);
+    }
+
+    function acknowledgeScore(string calldata courseCode, string calldata assessmentName) external {
+        require(bytes(walletToMatric[msg.sender]).length != 0, "Wallet not registered as a student");
+
+        ScoreEntry storage entry = studentScores[msg.sender][courseCode][assessmentName];
+        require(entry.submitted, "No score submitted for this assessment");
+        require(!entry.acknowledged, "Score already acknowledged");
+
+        entry.acknowledged = true;
+
+        emit ScoreAcknowledged(walletToMatric[msg.sender], courseCode, assessmentName);
     }
 
     function getScore(address studentWallet, string calldata courseCode, string calldata assessmentName)
