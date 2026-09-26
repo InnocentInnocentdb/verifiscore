@@ -131,4 +131,26 @@ contract VerifiScore is Ownable {
         ScoreEntry memory entry = studentScores[studentWallet][courseCode][assessmentName];
         return (entry.score, entry.submitted, entry.acknowledged);
     }
+
+    function getFullRecord(address studentWallet, string calldata courseCode, string calldata assessmentName)
+        external
+        view
+        returns (
+            uint256 originalScore,
+            bool submitted,
+            bool acknowledged,
+            uint256 correctionCount,
+            uint256 latestScore
+        )
+    {
+        ScoreEntry memory entry = studentScores[studentWallet][courseCode][assessmentName];
+        Correction[] memory corrections = scoreCorrections[studentWallet][courseCode][assessmentName];
+
+        uint256 finalScore = entry.score;
+        if (corrections.length > 0) {
+            finalScore = corrections[corrections.length - 1].newScore;
+        }
+
+        return (entry.score, entry.submitted, entry.acknowledged, corrections.length, finalScore);
+    }
 }

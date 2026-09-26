@@ -134,4 +134,29 @@ contract VerifiScoreTest is Test {
         vm.expectRevert("Not an authorized lecturer");
         verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 18, "Attempted fraud");
     }
+
+    function test_GetFullRecord_ReflectsLatestCorrection() public {
+        vm.prank(lecturerWallet);
+        verifiScore.submitScore("MAT/2020/001", "PLB301", "Practical1", 12);
+
+        vm.prank(studentWallet);
+        verifiScore.acknowledgeScore("PLB301", "Practical1");
+
+        vm.prank(lecturerWallet);
+        verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 18, "Misread handwriting");
+
+        (
+            uint256 originalScore,
+            bool submitted,
+            bool acknowledged,
+            uint256 correctionCount,
+            uint256 latestScore
+        ) = verifiScore.getFullRecord(studentWallet, "PLB301", "Practical1");
+
+        assertEq(originalScore, 12);
+        assertTrue(submitted);
+        assertTrue(acknowledged);
+        assertEq(correctionCount, 1);
+        assertEq(latestScore, 18);
+    }
 }
