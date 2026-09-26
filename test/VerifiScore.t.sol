@@ -91,4 +91,47 @@ contract VerifiScoreTest is Test {
         vm.expectRevert("Wallet not registered as a student");
         verifiScore.acknowledgeScore("PLB301", "Practical1");
     }
+
+    function test_CorrectScore_AppendsWithoutOverwriting() public {
+        vm.prank(lecturerWallet);
+        verifiScore.submitScore("MAT/2020/001", "PLB301", "Practical1", 12);
+
+        vm.prank(lecturerWallet);
+        verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 18, "Misread handwriting on original sheet");
+
+        (uint256 originalScore, , ) = verifiScore.getScore(studentWallet, "PLB301", "Practical1");
+        assertEq(originalScore, 12, "Original score must remain untouched");
+
+        uint256 count = verifiScore.getCorrectionCount(studentWallet, "PLB301", "Practical1");
+        assertEq(count, 1);
+
+        (uint256 newScore, string memory reason, ) =
+            verifiScore.getCorrection(studentWallet, "PLB301", "Practical1", 0);
+        assertEq(newScore, 18);
+        assertEq(reason, "Misread handwriting on original sheet");
+    }
+
+    function test_RevertWhen_CorrectingWithoutReason() public {
+        vm.prank(lecturerWallet);
+        verifiScore.submitScore("MAT/2020/001", "PLB301", "Practical1", 12);
+
+        vm.prank(lecturerWallet);
+        vm.expectRevert("A reason is required for every correction");
+        verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 18, "");
+    }
+
+    function test_RevertWhen_CorrectingUnsubmittedScore() public {
+        vm.prank(lecturerWallet);
+        vm.expectRevert("No original score to correct");
+        verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 18, "Late entry");
+    }
+
+    function test_RevertWhen_UnauthorizedCorrection() public {
+        vm.prank(lecturerWallet);
+        verifiScore.submitScore("MAT/2020/001", "PLB301", "Practical1", 12);
+
+        vm.prank(address(0x999));
+        vm.expectRevert("Not an authorized lecturer");
+        verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 18, "Attempted fraud");
+    }
 }

@@ -14,12 +14,20 @@ contract VerifiScore is Ownable {
         bool acknowledged;
     }
 
+    struct Correction {
+        uint256 newScore;
+        string reason;
+        uint256 timestamp;
+    }
+
     mapping(address => mapping(string => mapping(string => ScoreEntry))) private studentScores;
+    mapping(address => mapping(string => mapping(string => Correction[]))) private scoreCorrections;
 
     event StudentRegistered(string matricNumber, address indexed wallet);
     event LecturerAuthorized(address indexed lecturer);
     event ScoreSubmitted(string matricNumber, string courseCode, string assessmentName, uint256 score);
     event ScoreAcknowledged(string matricNumber, string courseCode, string assessmentName);
+    event ScoreCorrected(string matricNumber, string courseCode, string assessmentName, uint256 newScore, string reason);
 
     constructor() Ownable(msg.sender) {}
 
@@ -74,6 +82,45 @@ contract VerifiScore is Ownable {
         entry.acknowledged = true;
 
         emit ScoreAcknowledged(walletToMatric[msg.sender], courseCode, assessmentName);
+    }
+
+    function correctScore(
+        string calldata matricNumber,
+        string calldata courseCode,
+        string calldata assessmentName,
+        uint256 newScore,
+        string calldata reason
+    ) external onlyAuthorizedLecturer {
+        address studentWallet = matricToWallet[matricNumber];
+        require(studentWallet != address(0), "Student not registered");
+        require(studentScores[studentWallet][courseCode][assessmentName].submitted, "No original score to correct");
+        require(bytes(reason).length > 0, "A reason is required for every correction");
+
+        scoreCorrections[studentWallet][courseCode][assessmentName].push(Correction({
+            newScore: newScore,
+            reason: reason,
+            timestamp: block.timestamp
+        }));
+
+        emit ScoreCorrected(matricNumber, courseCode, assessmentName, newScore, reason);
+    }
+
+    function getCorrectionCount(address studentWallet, string calldata courseCode, string calldata assessmentName)
+        external
+        view
+        returns (uint256)
+    {
+        return scoreCorrections[studentWallet][courseCode][assessmentName].length;
+    }
+
+    function getCorrection(
+        address studentWallet,
+        string calldata courseCode,
+        string calldata assessmentName,
+        uint256 index
+    ) external view returns (uint256 newScore, string memory reason, uint256 timestamp) {
+        Correction memory c = scoreCorrections[studentWallet][courseCode][assessmentName][index];
+        return (c.newScore, c.reason, c.timestamp);
     }
 
     function getScore(address studentWallet, string calldata courseCode, string calldata assessmentName)

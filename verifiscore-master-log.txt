@@ -221,3 +221,60 @@ Ran 10 tests for test/VerifiScore.t.sol:VerifiScoreTest
 Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 3.92ms (865.66µs CPU time)
 
 Ran 1 test suite in 9.22ms (3.92ms CPU time): 10 tests passed, 0 failed, 0 skipped (10 total tests)
+[main d3af8d4] Day 3: Student acknowledgment locks scores via own signature, with passing tests
+ 3 files changed, 118 insertions(+), 1 deletion(-)
+To https://github.com/InnocentInnocentdb/verifiscore
+   d58df7e..d3af8d4  main -> main
+Compiling 3 files with Solc 0.8.37
+Solc 0.8.37 finished in 638.14ms
+Compiler run successful with warnings:
+Warning (2018): Function state mutability can be restricted to view
+  --> test/VerifiScore.t.sol:18:5:
+   |
+18 |     function test_RegisterStudent() public {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+warning[missing-events-access-control]: `walletToMatric` is changed without an event but is used for access control
+   ╭▸ src/VerifiScore.sol:45:9
+   │
+45 │         walletToMatric[studentWallet] = matricNumber;
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/missing-events-access-control
+
+warning[missing-events-access-control]: `authorizedLecturers` is changed without an event but is used for access control
+   ╭▸ src/VerifiScore.sol:52:9
+   │
+52 │         authorizedLecturers[lecturer] = true;
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/missing-events-access-control
+
+Compiling 1 files with Solc 0.8.37
+Solc 0.8.37 finished in 670.15ms
+Compiler run successful with warnings:
+Warning (2018): Function state mutability can be restricted to view
+  --> test/VerifiScore.t.sol:18:5:
+   |
+18 |     function test_RegisterStudent() public {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 14 tests for test/VerifiScore.t.sol:VerifiScoreTest
+[PASS] test_AcknowledgeScore() (gas: 138649)
+[PASS] test_CorrectScore_AppendsWithoutOverwriting() (gas: 317561)
+[PASS] test_RegisterStudent() (gas: 11420)
+[PASS] test_RevertWhen_AcknowledgingUnsubmittedScore() (gas: 39827)
+[PASS] test_RevertWhen_CorrectingUnsubmittedScore() (gas: 44672)
+[PASS] test_RevertWhen_CorrectingWithoutReason() (gas: 125977)
+[PASS] test_RevertWhen_DoubleAcknowledge() (gas: 160902)
+[PASS] test_RevertWhen_DuplicateMatric() (gas: 36250)
+[PASS] test_RevertWhen_NotAuthorizedLecturer() (gas: 36093)
+[PASS] test_RevertWhen_NotOwner() (gas: 34002)
+[PASS] test_RevertWhen_StudentNotRegistered() (gas: 40738)
+[PASS] test_RevertWhen_UnauthorizedCorrection() (gas: 120658)
+[PASS] test_RevertWhen_UnregisteredWalletAcknowledges() (gas: 118263)
+[PASS] test_SubmitScore() (gas: 101338)
+Suite result: ok. 14 passed; 0 failed; 0 skipped; finished in 6.95ms (4.61ms CPU time)
+
+Ran 1 test suite in 11.11ms (6.95ms CPU time): 14 tests passed, 0 failed, 0 skipped (14 total tests)
