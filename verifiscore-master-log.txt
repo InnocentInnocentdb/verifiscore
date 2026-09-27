@@ -464,3 +464,61 @@ Ran 19 tests for test/VerifiScore.t.sol:VerifiScoreTest
 Suite result: ok. 19 passed; 0 failed; 0 skipped; finished in 81.03ms (11.54ms CPU time)
 
 Ran 1 test suite in 85.38ms (81.03ms CPU time): 19 tests passed, 0 failed, 0 skipped (19 total tests)
+[main d6a56d7] Fix: apply forge fmt to pass CI formatting check
+ 3 files changed, 72 insertions(+), 32 deletions(-)
+To https://github.com/InnocentInnocentdb/verifiscore
+   d6cce5e..d6a56d7  main -> main
+Compiling 1 files with Solc 0.8.37
+Solc 0.8.37 finished in 893.20ms
+Compiler run successful!
+warning[missing-events-access-control]: `walletToMatric` is changed without an event but is used for access control
+   ╭▸ src/VerifiScore.sol:47:9
+   │
+47 │         walletToMatric[studentWallet] = matricNumber;
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/missing-events-access-control
+
+warning[missing-events-access-control]: `authorizedLecturers` is changed without an event but is used for access control
+   ╭▸ src/VerifiScore.sol:54:9
+   │
+54 │         authorizedLecturers[lecturer] = true;
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/missing-events-access-control
+
+7:contract DeployScript is Script {
+8:    function run() external returns (VerifiScore) {
+0x9FB65352149D91D9D70669F1E004787e9739b87B
+0.035445312722595112
+No files changed, compilation skipped
+Script ran successfully.
+
+== Return ==
+0: contract VerifiScore 0x5f843d236e1764cBC839c108B7190cD31cA23f19
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 11155111
+
+Estimated max fee per gas: 1.884267704 gwei
+Estimated base fee per gas: 0.941633852 gwei
+Estimated max priority fee per gas: 0.001 gwei
+
+Estimated total gas used for script: 3327104
+
+Estimated amount required: 0.006269154615049216 ETH
+
+==========================
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: /workspaces/verifiscore/broadcast/Deploy.s.sol/11155111/run-latest.json
+
+Sensitive values saved to: /workspaces/verifiscore/cache/Deploy.s.sol/11155111/run-latest.json
+

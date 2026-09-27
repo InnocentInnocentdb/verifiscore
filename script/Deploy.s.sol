@@ -1,19 +1,14 @@
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
 
 import {Script} from "forge-std/Script.sol";
 import {VerifiScore} from "../src/VerifiScore.sol";
 
-contract VerifiScoreScript is Script {
-    VerifiScore public counter;
-
-    function setUp() public {}
-
-    function run() public {
+contract DeployScript is Script {
+    function run() external returns (VerifiScore) {
         vm.startBroadcast();
-
-        counter = new VerifiScore();
-
+        VerifiScore verifiScore = new VerifiScore();
         vm.stopBroadcast();
+        return verifiScore;
     }
 }
