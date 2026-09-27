@@ -531,3 +531,10 @@ To https://github.com/InnocentInnocentdb/verifiscore
 1:# VerifiScore
 28:## Live Deployment
 31:**Contract Address:** [`0x5f843d236e1764cBC839c108B7190cD31cA23f19`](https://sepolia.etherscan.io/address/0x5f843d236e1764cBC839c108B7190cD31cA23f19)
+[main 50e30f5] Add full README documenting research, mechanism, and Sepolia deployment
+ 2 files changed, 42 insertions(+), 46 deletions(-)
+To https://github.com/InnocentInnocentdb/verifiscore
+   e910082..50e30f5  main -> main
+56:## Local Setup
+58:    git clone https://github.com/InnocentInnocentdb/verifiscore.git
+64:## Author
