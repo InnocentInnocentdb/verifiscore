@@ -159,4 +159,38 @@ contract VerifiScoreTest is Test {
         assertEq(correctionCount, 1);
         assertEq(latestScore, 18);
     }
+
+    function test_RevertWhen_RegisteringZeroAddress() public {
+        vm.expectRevert("Invalid wallet address");
+        verifiScore.registerStudent("MAT/2020/999", address(0));
+    }
+
+    function test_RevertWhen_AuthorizingZeroAddressLecturer() public {
+        vm.expectRevert("Invalid lecturer address");
+        verifiScore.addLecturer(address(0));
+    }
+
+    function test_RevertWhen_SameWalletUsedForTwoMatricNumbers() public {
+        vm.expectRevert("Wallet already registered");
+        verifiScore.registerStudent("MAT/2020/999", studentWallet);
+    }
+
+    function test_MultipleCorrectionsStackCorrectly() public {
+        vm.prank(lecturerWallet);
+        verifiScore.submitScore("MAT/2020/001", "PLB301", "Practical1", 10);
+
+        vm.prank(lecturerWallet);
+        verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 15, "First correction");
+
+        vm.prank(lecturerWallet);
+        verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 20, "Second correction");
+
+        assertEq(verifiScore.getCorrectionCount(studentWallet, "PLB301", "Practical1"), 2);
+
+        (uint256 originalScore, , , , uint256 latestScore) =
+            verifiScore.getFullRecord(studentWallet, "PLB301", "Practical1");
+
+        assertEq(originalScore, 10, "Original must survive multiple corrections");
+        assertEq(latestScore, 20, "Latest correction must be the one that counts");
+    }
 }

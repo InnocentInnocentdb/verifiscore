@@ -371,3 +371,40 @@ Ran 15 tests for test/VerifiScore.t.sol:VerifiScoreTest
 Suite result: ok. 15 passed; 0 failed; 0 skipped; finished in 3.24ms (1.84ms CPU time)
 
 Ran 1 test suite in 11.06ms (3.24ms CPU time): 15 tests passed, 0 failed, 0 skipped (15 total tests)
+[main 5f8955a] Day 5: Compilation view for Exam Officers via getFullRecord, with passing tests
+ 3 files changed, 140 insertions(+)
+To https://github.com/InnocentInnocentdb/verifiscore
+   ac96688..5f8955a  main -> main
+Compiling 1 files with Solc 0.8.37
+Solc 0.8.37 finished in 1.10s
+Compiler run successful with warnings:
+Warning (2018): Function state mutability can be restricted to view
+  --> test/VerifiScore.t.sol:18:5:
+   |
+18 |     function test_RegisterStudent() public {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 19 tests for test/VerifiScore.t.sol:VerifiScoreTest
+[PASS] test_AcknowledgeScore() (gas: 138626)
+[PASS] test_CorrectScore_AppendsWithoutOverwriting() (gas: 317649)
+[PASS] test_GetFullRecord_ReflectsLatestCorrection() (gas: 280379)
+[PASS] test_MultipleCorrectionsStackCorrectly() (gas: 375336)
+[PASS] test_RegisterStudent() (gas: 11376)
+[PASS] test_RevertWhen_AcknowledgingUnsubmittedScore() (gas: 39804)
+[PASS] test_RevertWhen_AuthorizingZeroAddressLecturer() (gas: 32795)
+[PASS] test_RevertWhen_CorrectingUnsubmittedScore() (gas: 44716)
+[PASS] test_RevertWhen_CorrectingWithoutReason() (gas: 126043)
+[PASS] test_RevertWhen_DoubleAcknowledge() (gas: 160858)
+[PASS] test_RevertWhen_DuplicateMatric() (gas: 36272)
+[PASS] test_RevertWhen_NotAuthorizedLecturer() (gas: 36159)
+[PASS] test_RevertWhen_NotOwner() (gas: 33957)
+[PASS] test_RevertWhen_RegisteringZeroAddress() (gas: 33749)
+[PASS] test_RevertWhen_SameWalletUsedForTwoMatricNumbers() (gas: 40705)
+[PASS] test_RevertWhen_StudentNotRegistered() (gas: 40782)
+[PASS] test_RevertWhen_UnauthorizedCorrection() (gas: 120746)
+[PASS] test_RevertWhen_UnregisteredWalletAcknowledges() (gas: 118307)
+[PASS] test_SubmitScore() (gas: 101382)
+Suite result: ok. 19 passed; 0 failed; 0 skipped; finished in 52.27ms (15.44ms CPU time)
+
+Ran 1 test suite in 56.22ms (52.27ms CPU time): 19 tests passed, 0 failed, 0 skipped (19 total tests)
