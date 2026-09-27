@@ -27,7 +27,9 @@ contract VerifiScore is Ownable {
     event LecturerAuthorized(address indexed lecturer);
     event ScoreSubmitted(string matricNumber, string courseCode, string assessmentName, uint256 score);
     event ScoreAcknowledged(string matricNumber, string courseCode, string assessmentName);
-    event ScoreCorrected(string matricNumber, string courseCode, string assessmentName, uint256 newScore, string reason);
+    event ScoreCorrected(
+        string matricNumber, string courseCode, string assessmentName, uint256 newScore, string reason
+    );
 
     constructor() Ownable(msg.sender) {}
 
@@ -63,11 +65,8 @@ contract VerifiScore is Ownable {
         require(studentWallet != address(0), "Student not registered");
         require(!studentScores[studentWallet][courseCode][assessmentName].submitted, "Score already submitted");
 
-        studentScores[studentWallet][courseCode][assessmentName] = ScoreEntry({
-            score: score,
-            submitted: true,
-            acknowledged: false
-        });
+        studentScores[studentWallet][courseCode][assessmentName] =
+            ScoreEntry({score: score, submitted: true, acknowledged: false});
 
         emit ScoreSubmitted(matricNumber, courseCode, assessmentName, score);
     }
@@ -96,11 +95,9 @@ contract VerifiScore is Ownable {
         require(studentScores[studentWallet][courseCode][assessmentName].submitted, "No original score to correct");
         require(bytes(reason).length > 0, "A reason is required for every correction");
 
-        scoreCorrections[studentWallet][courseCode][assessmentName].push(Correction({
-            newScore: newScore,
-            reason: reason,
-            timestamp: block.timestamp
-        }));
+        scoreCorrections[studentWallet][courseCode][assessmentName].push(
+            Correction({newScore: newScore, reason: reason, timestamp: block.timestamp})
+        );
 
         emit ScoreCorrected(matricNumber, courseCode, assessmentName, newScore, reason);
     }
@@ -135,13 +132,7 @@ contract VerifiScore is Ownable {
     function getFullRecord(address studentWallet, string calldata courseCode, string calldata assessmentName)
         external
         view
-        returns (
-            uint256 originalScore,
-            bool submitted,
-            bool acknowledged,
-            uint256 correctionCount,
-            uint256 latestScore
-        )
+        returns (uint256 originalScore, bool submitted, bool acknowledged, uint256 correctionCount, uint256 latestScore)
     {
         ScoreEntry memory entry = studentScores[studentWallet][courseCode][assessmentName];
         Correction[] memory corrections = scoreCorrections[studentWallet][courseCode][assessmentName];

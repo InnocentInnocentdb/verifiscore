@@ -34,8 +34,7 @@ contract VerifiScoreTest is Test {
         vm.prank(lecturerWallet);
         verifiScore.submitScore("MAT/2020/001", "PLB301", "Practical1", 18);
 
-        (uint256 score, bool submitted, bool acknowledged) =
-            verifiScore.getScore(studentWallet, "PLB301", "Practical1");
+        (uint256 score, bool submitted, bool acknowledged) = verifiScore.getScore(studentWallet, "PLB301", "Practical1");
 
         assertEq(score, 18);
         assertTrue(submitted);
@@ -61,7 +60,7 @@ contract VerifiScoreTest is Test {
         vm.prank(studentWallet);
         verifiScore.acknowledgeScore("PLB301", "Practical1");
 
-        (, , bool acknowledged) = verifiScore.getScore(studentWallet, "PLB301", "Practical1");
+        (,, bool acknowledged) = verifiScore.getScore(studentWallet, "PLB301", "Practical1");
         assertTrue(acknowledged);
     }
 
@@ -99,14 +98,13 @@ contract VerifiScoreTest is Test {
         vm.prank(lecturerWallet);
         verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 18, "Misread handwriting on original sheet");
 
-        (uint256 originalScore, , ) = verifiScore.getScore(studentWallet, "PLB301", "Practical1");
+        (uint256 originalScore,,) = verifiScore.getScore(studentWallet, "PLB301", "Practical1");
         assertEq(originalScore, 12, "Original score must remain untouched");
 
         uint256 count = verifiScore.getCorrectionCount(studentWallet, "PLB301", "Practical1");
         assertEq(count, 1);
 
-        (uint256 newScore, string memory reason, ) =
-            verifiScore.getCorrection(studentWallet, "PLB301", "Practical1", 0);
+        (uint256 newScore, string memory reason,) = verifiScore.getCorrection(studentWallet, "PLB301", "Practical1", 0);
         assertEq(newScore, 18);
         assertEq(reason, "Misread handwriting on original sheet");
     }
@@ -145,13 +143,8 @@ contract VerifiScoreTest is Test {
         vm.prank(lecturerWallet);
         verifiScore.correctScore("MAT/2020/001", "PLB301", "Practical1", 18, "Misread handwriting");
 
-        (
-            uint256 originalScore,
-            bool submitted,
-            bool acknowledged,
-            uint256 correctionCount,
-            uint256 latestScore
-        ) = verifiScore.getFullRecord(studentWallet, "PLB301", "Practical1");
+        (uint256 originalScore, bool submitted, bool acknowledged, uint256 correctionCount, uint256 latestScore) =
+            verifiScore.getFullRecord(studentWallet, "PLB301", "Practical1");
 
         assertEq(originalScore, 12);
         assertTrue(submitted);
@@ -187,7 +180,7 @@ contract VerifiScoreTest is Test {
 
         assertEq(verifiScore.getCorrectionCount(studentWallet, "PLB301", "Practical1"), 2);
 
-        (uint256 originalScore, , , , uint256 latestScore) =
+        (uint256 originalScore,,,, uint256 latestScore) =
             verifiScore.getFullRecord(studentWallet, "PLB301", "Practical1");
 
         assertEq(originalScore, 10, "Original must survive multiple corrections");
