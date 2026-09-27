@@ -522,3 +522,12 @@ Transactions saved to: /workspaces/verifiscore/broadcast/Deploy.s.sol/11155111/r
 
 Sensitive values saved to: /workspaces/verifiscore/cache/Deploy.s.sol/11155111/run-latest.json
 
+[main e910082] Day 7: VerifiScore deployed live to Sepolia at 0x5f843d236e1764cBC839c108B7190cD31cA23f19
+ 4 files changed, 204 insertions(+), 11 deletions(-)
+ create mode 100644 broadcast/Deploy.s.sol/11155111/run-1790504618137.json
+ create mode 100644 broadcast/Deploy.s.sol/11155111/run-latest.json
+To https://github.com/InnocentInnocentdb/verifiscore
+   d6a56d7..e910082  main -> main
+1:# VerifiScore
+28:## Live Deployment
+31:**Contract Address:** [`0x5f843d236e1764cBC839c108B7190cD31cA23f19`](https://sepolia.etherscan.io/address/0x5f843d236e1764cBC839c108B7190cD31cA23f19)
