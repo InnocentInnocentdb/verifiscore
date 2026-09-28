@@ -6,7 +6,7 @@
 
 ## The Problem
 
-Nigerian tertiary institutions carry a well-documented pattern of grade manipulation, sometimes called "sorting" where bribery and relational access override merit-based assessment. In 2026, a Dean at Abia State University was accused of charging final-year students up to ₦350,000 to clear academic projects.
+Nigerian tertiary institutions carry a well-documented pattern of grade manipulation, sometimes called "sorting," where bribery and relational access override merit-based assessment. In 2026, a Dean at Abia State University was accused of charging final-year students up to ₦350,000 to clear academic projects.
 
 But the deeper, more mechanical failure sits earlier in the pipeline. A Daily Trust investigation documented a Bayero University Kano graduate whose exam score was simply omitted from her final transcript, a correction that took nearly a year to resolve. The piece noted this reflects a wider pattern of poor academic record-keeping causing delays in graduation and decision-making across Nigerian universities.
 
@@ -44,7 +44,7 @@ Blockchain-based academic transcript verification is an active area of research 
 ## Tech Stack
 
 - **Solidity** ^0.8.19
-- **Foundry** (Forge, Cast) build, test, and deployment tooling
+- **Foundry** (Forge, Cast): build, test, and deployment tooling
 - **OpenZeppelin Contracts** — `Ownable` for access control
 
 ## Testing

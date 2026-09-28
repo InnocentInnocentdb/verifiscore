@@ -538,3 +538,8 @@ To https://github.com/InnocentInnocentdb/verifiscore
 56:## Local Setup
 58:    git clone https://github.com/InnocentInnocentdb/verifiscore.git
 64:## Author
+[main ad8555f] Fix: restore missing Local Setup and Author sections in README
+ 2 files changed, 31 insertions(+), 11 deletions(-)
+To https://github.com/InnocentInnocentdb/verifiscore
+   50e30f5..ad8555f  main -> main
+9:Nigerian tertiary institutions carry a well-documented pattern of grade manipulation, sometimes called "sorting," where bribery and relational access override merit-based assessment. In 2026, a Dean at Abia State University was accused of charging final-year students up to ₦350,000 to clear academic projects.
