@@ -4,6 +4,12 @@
 
 ---
 
+## Key Resources
+
+- **Full Whitepaper:** [WHITEPAPER.md](WHITEPAPER.md)
+- **Live Contract (Sepolia):** [0x5f843d236e1764cBC839c108B7190cD31cA23f19](https://sepolia.etherscan.io/address/0x5f843d236e1764cBC839c108B7190cD31cA23f19)
+- **Repository:** [github.com/InnocentInnocentdb/verifiscore](https://github.com/InnocentInnocentdb/verifiscore)
+
 ## The Problem
 
 Nigerian tertiary institutions carry a well-documented pattern of grade manipulation, sometimes called "sorting," where bribery and relational access override merit-based assessment. In 2026, a Dean at Abia State University was accused of charging final-year students up to ₦350,000 to clear academic projects.

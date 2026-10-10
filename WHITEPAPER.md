@@ -8,7 +8,7 @@
 
 This project did not arrive from nowhere. It began as a question, grew through seven days of real, tested, and often difficult work, and now stands as a working piece of infrastructure, deployed live and permanently to a public blockchain. Every stage of it, from the first search for a genuine problem to the final line of this document, was built in good conscience, under YAHWEH's guidance, by Innocent Taylor, known also as Figadstro, as the final capstone project for a web3 and blockchain development course.
 
-It is offered here not as a finished commercial product, but as a complete, honest, and working proof of a specific idea. May it serve any reader, any forker, and any scholar who comes across it well.
+It is offered here not as a finished commercial product, but as a complete, honest, and working proof of a specific idea. May it serve any reader, any developer who forks this work, and any scholar who comes across it well.
 
 ---
 

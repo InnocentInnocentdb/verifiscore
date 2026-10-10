@@ -543,3 +543,15 @@ To https://github.com/InnocentInnocentdb/verifiscore
 To https://github.com/InnocentInnocentdb/verifiscore
    50e30f5..ad8555f  main -> main
 9:Nigerian tertiary institutions carry a well-documented pattern of grade manipulation, sometimes called "sorting," where bribery and relational access override merit-based assessment. In 2026, a Dean at Abia State University was accused of charging final-year students up to ₦350,000 to clear academic projects.
+[main 6e870b7] Fix: restore missing Local Setup and Author sections in README
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+To https://github.com/InnocentInnocentdb/verifiscore
+   ad8555f..6e870b7  main -> main
+47:- **Foundry** (Forge, Cast): build, test, and deployment tooling
+1:# VerifiScore
+15:## Abstract
+35:The general category of using blockchain technology to secure academic records is well established. Several Nigerian academic papers propose blockchain based transcript systems, including a 2025 paper from the Nigerian Defence Academy describing a modified blockchain architecture for academic transcripts, and a University of Ibadan journal paper describing a Solidity based transcript verification system built on a private Ethereum network. A Nigerian startup called QuickCredentia is independently pursuing blockchain based transcript processing. Internationally, MIT has deployed Blockcerts, a real and working system for issuing and verifying diplomas on the Bitcoin blockchain, and a platform called SmartCert, used at Al Zaytoonah University of Jordan, performs credential verification using cryptographic signatures at genuine institutional scale. A Portuguese case study known as FenixEdu, part of the QualiChain project, documents a further working deployment in this same category.
+124:## References
+142:17. FenixEdu and QualiChain, Portugal case study: https://www.sciencedirect.com/science/article/pii/S2096720922000409
+WHITEPAPER.md:11:It is offered here not as a finished commercial product, but as a complete, honest, and working proof of a specific idea. May it serve any reader, any developer who forks this work, and any scholar who comes across it well.
+README.md:7:## Key Resources
